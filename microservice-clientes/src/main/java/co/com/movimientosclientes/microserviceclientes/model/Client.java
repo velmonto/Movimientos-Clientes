@@ -14,8 +14,8 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "password", nullable = false)
-    private String password;
+    @Column(name = "password", nullable = false, length = 4)
+    private int password;
 
     @Column(name = "status")
     private int status;
@@ -36,7 +36,7 @@ public class Client {
     public Client() {
     }
 
-    public Client(String password, int status) {
+    public Client(int password, int status) {
         this.password = password;
         this.status = status;
     }
@@ -49,11 +49,11 @@ public class Client {
         this.id = id;
     }
 
-    public String getPassword() {
+    public int getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(int password) {
         this.password = password;
     }
 
