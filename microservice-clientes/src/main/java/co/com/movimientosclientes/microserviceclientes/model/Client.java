@@ -1,11 +1,18 @@
 package co.com.movimientosclientes.microserviceclientes.model;
 
+import co.com.movimientosclientes.microserviceclientes.dto.AccountDTO;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "client")
 public class Client {
@@ -24,46 +31,6 @@ public class Client {
     @JoinColumn(name = "person_id")
     @JsonIgnoreProperties("client")
     private Person person;
-
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
-    }
-
-    public Client() {
-    }
-
-    public Client(int password, int status) {
-        this.password = password;
-        this.status = status;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public int getPassword() {
-        return password;
-    }
-
-    public void setPassword(int password) {
-        this.password = password;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
 
 
     @Override

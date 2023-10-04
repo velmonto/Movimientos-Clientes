@@ -2,7 +2,9 @@ package co.com.movimientosclientes.microserviceclientes.controller;
 
 import co.com.movimientosclientes.microserviceclientes.exception.ResourceNotFoundException;
 import co.com.movimientosclientes.microserviceclientes.model.Client;
+import co.com.movimientosclientes.microserviceclientes.model.Person;
 import co.com.movimientosclientes.microserviceclientes.service.ClientService;
+import co.com.movimientosclientes.microserviceclientes.service.PersonService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,9 @@ public class ClientController {
 
     @Autowired
     private ClientService clientService;
+
+    @Autowired
+    private PersonService personService;
 
     @GetMapping
     public ResponseEntity<?> getClients(){
@@ -47,5 +52,16 @@ public class ClientController {
         client.setPerson(detailClient.getPerson());
         Client clientUpdated = clientService.saveClient(client);
         return ResponseEntity.ok(clientUpdated);
+    }
+
+    @GetMapping("/{identification}")
+    public ResponseEntity<?> findByIdentification(@PathVariable int identification){
+        logger.info("Se inicia consulta de persona por identificacion");
+        Person person = personService.findByIdentification(identification);
+        person.setIdentification(identification);
+        logger.info("Persona consultada: "+person.toString());
+        Client client = clientService.findByPerson(person);
+        logger.info("Client consultado: "+client.toString());
+        return ResponseEntity.ok(client);
     }
 }

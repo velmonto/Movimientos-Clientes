@@ -8,8 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 
-public interface ClientRepository extends JpaRepository<Client, Long> {
-
-    Client findByPerson(Person person);
-
+public interface PersonRepository extends JpaRepository<Person, Long> {
+    Person findByIdentification(int identification);
 }

@@ -1,6 +1,7 @@
 package co.com.movimientosclientes.microserviceclientes.service;
 
 import co.com.movimientosclientes.microserviceclientes.model.Client;
+import co.com.movimientosclientes.microserviceclientes.model.Person;
 import co.com.movimientosclientes.microserviceclientes.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,5 +41,15 @@ public class ClienServiceImpl implements ClientService{
     @Override
     public Optional<Client> findAllClientById(Long id){
         return clientRepository.findById(id);
+    }
+
+//    @Override
+//    public Client findByPersonId(Long personId){
+//        return clientRepository.findByPersonId(personId);
+//    }
+
+    @Override
+    public Client findByPerson(Person person){
+        return clientRepository.findByPerson(person);
     }
 }
