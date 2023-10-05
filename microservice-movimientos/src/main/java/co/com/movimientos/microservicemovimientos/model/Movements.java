@@ -31,4 +31,11 @@ public class Movements {
     @JoinColumn(name = "id_account")
     private Account account;
 
+    @Column(name = "detailMovement", nullable = true)
+    private String detailMovement;
+
+    @Column(name = "movement", nullable = true)
+    private float movement;
+
+
 }
